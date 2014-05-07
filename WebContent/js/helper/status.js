@@ -33,10 +33,10 @@ var Status = (function() {
 		defaultValues : {
 			'provider' : Settings.defaultProvider,
 			'clusterStations' : true,
-			'generalizeData' : false,
+			'generalizeData' : true,
 			'timeseries' : {},
 			'timespan' : Time.isoTimespan('today'),
-			'saveStatus' : true,
+			'saveStatus' : false,
 			'concentrationMarker' : false
 		},
 		
