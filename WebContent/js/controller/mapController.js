@@ -240,7 +240,7 @@ var Map = {
 					}
 					phenomena[elem.phenomenon.id].timeseries.push({
 						id : id,
-						internalId : TimeSeries.createInternalId(id, url), 
+						internalId : tsHelper.createInternalId(id, url), 
 						selected : Status.hasTimeseriesWithId(id),
 						procedure : elem.procedure.label
 					});
@@ -288,13 +288,14 @@ var Map = {
 		$('[data-id=' + timeseries.getTsId() + ']').addClass('loaded').find(':input').prop('disabled', false);
 		var lastValue = timeseries.getLastValueFormatted();
 		if (lastValue) {
-			$('[data-id=' + timeseries.getTsId() + ']').find('.lastValue').text(lastValue).show();
+			$('[data-id=' + timeseries.getTsId() + ']').find('.additionalInfo').text(lastValue).show();
 		}
 		Map.timeseriesCache[timeseries.getInternalId()] = timeseries;
 	},
 	
 	addTimeseries : function(timeseries) {
 		Pages.navigateToChart();
+		Modal.hide();
 		TimeSeriesController.addTS(timeseries);
 	},
 
